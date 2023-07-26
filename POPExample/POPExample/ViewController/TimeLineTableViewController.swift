@@ -7,8 +7,6 @@
 
 import UIKit
 
-let timelineTitle = "Timeline"
-
 final class TimeLineTableViewController: UITableViewController, ContainContents, CanShowDetailViewController {
     let tableViewCellIdentifier = "reuseIdentifier"
     
@@ -31,7 +29,7 @@ extension TimeLineTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        numberOfContents
+        return numberOfContents
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

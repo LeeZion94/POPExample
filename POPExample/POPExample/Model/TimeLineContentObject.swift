@@ -10,7 +10,6 @@ import Foundation
 
 final class TimeLineContentObject {
     static let shared: TimeLineContentObject = TimeLineContentObject()
-    
     var contents: [Content] = []
     
     private init() {

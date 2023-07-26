@@ -7,6 +7,8 @@
 
 import UIKit
 
+let timelineTitle = "Timeline"
+
 enum ViewModeList {
     case Table, Collection
 }
@@ -52,7 +54,7 @@ final class MainNavigationViewController: UINavigationController {
             if let collectionViewController = collectionViewController {
                 rootViewController = collectionViewController
             } else {
-                var cellSize: CGSize = UIApplication.shared.keyWindow!.bounds.size
+                var cellSize: CGSize = (view.window?.windowScene?.screen.bounds.size)!
                 let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
                 
                 cellSize.width /= 3.0

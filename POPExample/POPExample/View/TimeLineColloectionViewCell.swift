@@ -12,51 +12,40 @@ final class TimeLineCollectionViewCell: UICollectionViewCell, MediaContainer {
     var note = UILabel()
     var videoLayer = AVPlayerLayer()
     var mediaImageView = UIImageView()
-    
     var content: Content? {
         didSet {
             self.contentChanged()
         }
     }
-    
-    convenience init(frame: CGRect, content: Content) {
-        self.init(frame: frame)
-        self.content = content
-        contentChanged()
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        backgroundColor = .white
         
-        var mediaRect: CGRect = self.bounds
+        var mediaRect: CGRect = bounds
         mediaRect.size.width -= 10
         mediaRect.size.height -= 40
         mediaRect.origin.x += 5
         mediaRect.origin.y += 5
         
-        mediaImageView.layout(in: mediaRect)
-        videoLayer.layout(in: mediaRect)
-        
-        mediaImageView.contentMode = .scaleAspectFit
-        
-        self.addSubview(mediaImageView)
-        self.layer.addSublayer(videoLayer)
-        
-        note.textAlignment = .center
-        
         var noteRect: CGRect = mediaRect
-        noteRect.origin.y = self.bounds.size.height - 30
+        noteRect.origin.y = bounds.size.height - 30
         noteRect.size.height = 30
         
-        note.layout(in: noteRect)
-        
-        self.addSubview(note)
-        
+        note.textAlignment = .center
         note.font = UIFont.systemFont(ofSize: 15)
         note.adjustsFontSizeToFitWidth = true
         note.minimumScaleFactor = 0.1
+        
+        mediaImageView.contentMode = .scaleAspectFit
+        mediaImageView.layout(in: mediaRect)
+        videoLayer.layout(in: mediaRect)
+        note.layout(in: noteRect)
+        
+        layer.addSublayer(videoLayer)
+        addSubview(mediaImageView)
+        addSubview(note)
     }
     
     required init?(coder: NSCoder) {

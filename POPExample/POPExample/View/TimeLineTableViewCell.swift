@@ -12,7 +12,6 @@ final class TimeLineTableViewCell: UITableViewCell, MediaContainer {
     var note = UILabel()
     var videoLayer = AVPlayerLayer()
     var mediaImageView = UIImageView()
-
     var content: Content? {
         didSet {
             self.contentChanged()
@@ -25,25 +24,21 @@ final class TimeLineTableViewCell: UITableViewCell, MediaContainer {
         contentChanged()
         
         let cellHeight: CGFloat = 80
-        
         let mediaRect: CGRect = CGRect(x: 5, y: 5, width: cellHeight - 10, height: cellHeight - 10)
-        mediaImageView.layout(in: mediaRect)
-        videoLayer.layout(in: mediaRect)
+        var noteRect: CGRect = bounds
         
-        mediaImageView.contentMode = .scaleAspectFit
-        
-        self.addSubview(mediaImageView)
-        self.layer.addSublayer(videoLayer)
-        
-        var noteRect: CGRect = self.bounds
         noteRect.origin.x = mediaRect.size.width + 10
         noteRect.size.width -= noteRect.origin.x
         noteRect.size.height = cellHeight
         
+        mediaImageView.contentMode = .scaleAspectFit
+        mediaImageView.layout(in: mediaRect)
+        videoLayer.layout(in: mediaRect)
         note.layout(in: noteRect)
         
-        
-        self.addSubview(note)
+        layer.addSublayer(videoLayer)
+        addSubview(mediaImageView)
+        addSubview(note)
     }
     
     required init?(coder: NSCoder) {

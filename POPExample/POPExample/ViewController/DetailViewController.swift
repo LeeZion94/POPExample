@@ -12,7 +12,6 @@ final class DetailViewController: UIViewController, MediaContainer {
     var note = UILabel()
     var videoLayer = AVPlayerLayer()
     var mediaImageView = UIImageView()
-    
     var content: Content? {
         didSet {
             self.contentChanged()
@@ -22,24 +21,23 @@ final class DetailViewController: UIViewController, MediaContainer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        var noteFrame: CGRect = view.bounds
         
-        mediaImageView.layout(in: self.view.bounds)
-        videoLayer.layout(in: self.view.bounds)
-        
-        mediaImageView.contentMode = .scaleAspectFit
-        
-        self.view.addSubview(mediaImageView)
-        self.view.layer.addSublayer(videoLayer)
-        
-        var noteFrame: CGRect = self.view.bounds
         noteFrame.origin.y = noteFrame.size.height - 50
         noteFrame.size.height = 50
         
         note.layout(in: noteFrame)
         note.textAlignment = .center
         note.font = UIFont.systemFont(ofSize: 30)
-        self.view.addSubview(note)
+        
+        mediaImageView.layout(in: view.bounds)
+        mediaImageView.contentMode = .scaleAspectFit
+        videoLayer.layout(in: view.bounds)
+        
+        view.backgroundColor = .white
+        view.addSubview(mediaImageView)
+        view.layer.addSublayer(videoLayer)
+        view.addSubview(note)
     }
     
     override func viewDidAppear(_ animated: Bool) {
