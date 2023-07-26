@@ -8,7 +8,7 @@
 import UIKit
 
 final class TimeLineTableViewController: UITableViewController, ContainContents, CanShowDetailViewController {
-    let tableViewCellIdentifier = "reuseIdentifier"
+    private let tableViewCellIdentifier = "reuseIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
