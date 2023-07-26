@@ -6,4 +6,6 @@
 
 예시코드 : https://bitbucket.org/yagom/popsocialmediaexample/src/master/
 
+참고영상 : https://www.youtube.com/watch?v=9gkzHUsQiUc
+
 2017년 Let's Swift에서 야곰이 발표해주신 프로토콜 오리엔티드 프로그래밍 코드를 변경된 문법에 맞게 수정한 코드입니다.
